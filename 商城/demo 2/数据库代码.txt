@@ -1,0 +1,12 @@
+CREATE TABLE goods(
+    goodsid INT PRIMARY KEY,
+    goodsname VARCHAR(50),
+    price DOUBLE
+);
+INSERT INTO goods(goodsid,goodsname,price) VALUES('3','苹果',8000.00);
+
+CREATE TABLE pay(
+    sid VARCHAR(50),
+    dateString VARCHAR(50),
+    goodsid int
+);

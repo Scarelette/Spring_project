@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.MyMall.dao.CommentsRootMapper" >
+  <resultMap id="BaseResultMap" type="com.MyMall.pojo.CommentsRoot" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="type" jdbcType="BIT" javaType="java.lang.Boolean" />
+      <arg column="owner_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="from_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="from_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="from_avatar" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="like_num" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="content" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="comment_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, type, owner_id, from_id, from_name, from_avatar, like_num, content, create_time, 
+    comment_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from comments_root
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from comments_root
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.MyMall.pojo.CommentsRoot" >
+    insert into comments_root (id, type, owner_id, 
+      from_id, from_name, from_avatar, 
+      like_num, content, create_time, 
+      comment_id)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=BIT}, #{ownerId,jdbcType=VARCHAR}, 
+      #{fromId,jdbcType=VARCHAR}, #{fromName,jdbcType=VARCHAR}, #{fromAvatar,jdbcType=VARCHAR}, 
+      #{likeNum,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{commentId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.MyMall.pojo.CommentsRoot" >
+    insert into comments_root
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="ownerId != null" >
+        owner_id,
+      </if>
+      <if test="fromId != null" >
+        from_id,
+      </if>
+      <if test="fromName != null" >
+        from_name,
+      </if>
+      <if test="fromAvatar != null" >
+        from_avatar,
+      </if>
+      <if test="likeNum != null" >
+        like_num,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="commentId != null" >
+        comment_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BIT},
+      </if>
+      <if test="ownerId != null" >
+        #{ownerId,jdbcType=VARCHAR},
+      </if>
+      <if test="fromId != null" >
+        #{fromId,jdbcType=VARCHAR},
+      </if>
+      <if test="fromName != null" >
+        #{fromName,jdbcType=VARCHAR},
+      </if>
+      <if test="fromAvatar != null" >
+        #{fromAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="likeNum != null" >
+        #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentId != null" >
+        #{commentId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.MyMall.pojo.CommentsRoot" >
+    update comments_root
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=BIT},
+      </if>
+      <if test="ownerId != null" >
+        owner_id = #{ownerId,jdbcType=VARCHAR},
+      </if>
+      <if test="fromId != null" >
+        from_id = #{fromId,jdbcType=VARCHAR},
+      </if>
+      <if test="fromName != null" >
+        from_name = #{fromName,jdbcType=VARCHAR},
+      </if>
+      <if test="fromAvatar != null" >
+        from_avatar = #{fromAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="likeNum != null" >
+        like_num = #{likeNum,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentId != null" >
+        comment_id = #{commentId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.MyMall.pojo.CommentsRoot" >
+    update comments_root
+    set type = #{type,jdbcType=BIT},
+      owner_id = #{ownerId,jdbcType=VARCHAR},
+      from_id = #{fromId,jdbcType=VARCHAR},
+      from_name = #{fromName,jdbcType=VARCHAR},
+      from_avatar = #{fromAvatar,jdbcType=VARCHAR},
+      like_num = #{likeNum,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      comment_id = #{commentId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
